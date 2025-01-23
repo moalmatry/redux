@@ -1,13 +1,14 @@
 "use client";
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { increment, decrement } from "@/store/features/counter/counter-slice";
+import { decrement, increment } from "@/store/features/counter/counter-slice";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 
 const Counter = () => {
   // Read data from the store
-  const count = useSelector((state) => state.counter.value);
+  //   const count = useSelector((state) => state.counter.value);
+  const count = useAppSelector((state) => state.counter.value);
   //  Changing the data by sending action to the store
-  const dispatch = useDispatch();
+  //   const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   return (
     <div>
       <button onClick={() => dispatch(increment())}>+</button>
