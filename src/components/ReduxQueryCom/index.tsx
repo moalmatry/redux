@@ -9,7 +9,7 @@ import React from "react";
 
 const ReduxQueryCom = () => {
   const { isLoading: isLoadingAllData, data: allData } = useGetAllProductsQuery(
-    {}
+    { limit: 10, offset: 0 }
   );
   const { data: productById, isLoading: isLoadingProductById } =
     useGetProductByIdQuery(2);
@@ -28,9 +28,7 @@ const ReduxQueryCom = () => {
       <button
         onClick={() =>
           addProduct({
-            id: 300,
             title: "new product 2 ",
-            description: "Hello World",
           })
         }
       >
