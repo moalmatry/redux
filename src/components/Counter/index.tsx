@@ -1,5 +1,10 @@
 "use client";
-import { decrement, increment } from "@/store/features/counter/counter-slice";
+import {
+  decrement,
+  increment,
+  incrementAsync,
+  // incrementByAmount,
+} from "@/store/features/counter/counter-slice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 
 const Counter = () => {
@@ -14,6 +19,8 @@ const Counter = () => {
       <button onClick={() => dispatch(increment())}>+</button>
       <h1>{count}</h1>
       <button onClick={() => dispatch(decrement())}>-</button>
+
+      <button onClick={() => dispatch(incrementAsync(5))}>increment 5</button>
     </div>
   );
 };
