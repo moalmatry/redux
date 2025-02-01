@@ -2,7 +2,12 @@
 import Counter from "@/components/Counter";
 import PersonCom from "@/components/PersonCom";
 import ReduxQueryCom from "@/components/ReduxQueryCom";
-import { login, setIsLoading, signup } from "@/store/features/auth/auth-slice";
+import {
+  login,
+  logout,
+  setIsLoading,
+  signup,
+} from "@/store/features/auth/auth-slice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 
 export default function Home() {
@@ -41,6 +46,10 @@ export default function Home() {
             className="bg-red-600 p-4"
           >
             Make it Loading
+          </button>
+
+          <button onClick={() => dispatch(logout())} className="bg-red-600 p-4">
+            Logout
           </button>
           <button
             onClick={async () =>

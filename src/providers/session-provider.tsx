@@ -29,8 +29,12 @@ const SessionProvider = ({ children }: { children: React.ReactNode }) => {
       const storedToken = localStorage.getItem(TOKEN_KEY);
       const name = localStorage.getItem(NAME_KEY);
       const profileImg = localStorage.getItem(PROFILE_IMG_KEY);
-      if (!storedToken) return;
-      if (storedToken || !name || !profileImg || !id) {
+      if (!storedToken) {
+        dispatch(setIsLoading(false));
+
+        return;
+      }
+      if (storedToken && (!name || !profileImg || !id)) {
         userData(storedToken).then((user) => {
           if (user.status === "success") {
             dispatch(addId(user.data.id));
@@ -56,7 +60,6 @@ const SessionProvider = ({ children }: { children: React.ReactNode }) => {
         dispatch(addMessage("Successfully added from the api"));
       }
     }
-
     dispatch(setIsLoading(false));
   }, [dispatch, token]);
   return children;
