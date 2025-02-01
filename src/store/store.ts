@@ -4,11 +4,13 @@ import personReducer from "./features/person/person-slice";
 import { useDispatch, TypedUseSelectorHook, useSelector } from "react-redux";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { productApi } from "@/services/dummyData";
+import authReducer from "./features/auth/auth-slice";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     person: personReducer,
+    auth: authReducer,
     [productApi.reducerPath]: productApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
